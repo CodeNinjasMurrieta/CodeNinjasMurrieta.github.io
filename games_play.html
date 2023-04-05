@@ -1,0 +1,311 @@
+<DOCTYPE! html>
+	
+<html>
+	<head>
+		<title>Code Ninjas Murrieta</title>
+		<meta charset="UTF-8">
+		<meta name="author" content="Ricky Lizarraga">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="style.css">
+		<link rel="icon" type="image/x-icon" href="favicon.ico" />
+	</head>
+	
+	<body style="overflow-y: hidden">
+		<div class="blog_area2" id="blog_area">
+			<div class="blog2" id="blog">
+				<div class="game" id="game">
+					<div style="text-align: left; padding-left: 20px; padding-top: 5px;">
+						<a href="games.html">Back to Games Page</a>
+					</div>
+					
+					<h3 style="text-align: center; margin-bottom: 15px; margin-top: 5px" id="game_header"></h3>
+					<div class="game_container">
+						<img src="left_arrow.jpg" class="button" id="left_button" style="padding-right: 5vw;" onclick="previous_page()">
+						
+						
+						<iframe class="" id="game_display" src="" allowtransparency="true"  frameborder="0" scrolling="no"  allowfullscreen sandbox="allow-popups allow-forms allow-scripts allow-same-origin"></iframe>
+						
+			
+						<img src="right_arrow.jpg" class="button" id="right_button" style="padding-left: 5vw" onclick="next_page()">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			var current = 0;
+			
+			
+			
+			
+			//Name, URL, Type of game (0=Scratch, 1=MakeCode, 2=JavaScript, 3=Tinkercad) 
+			var ninja_list = [
+				['Aaron V.', 'https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=m9hpv1VHGh&gradeMode=true', 2],
+				['Aiden J.','https://arcade.makecode.com/---run?id=68473-12759-62212-29939', 1],
+				['Ava M.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=jPe2xiPgCo&gradeMode=true', 2],
+				['Axel M.','https://www.tinkercad.com/embed/6aI6rPHBBOu', 3],
+				['Bryant W.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=rytNl1atNY&gradeMode=true', 2],
+				['Caiki R.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=9NoTZ0LMjp&gradeMode=true', 2],
+				['Caleb M.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=a4kutitECl&gradeMode=true', 2],
+				['Carlos G.M.','https://arcade.makecode.com/---run?id=S03055-70915-74119-10032', 1],
+				['Christian K.','https://www.tinkercad.com/embed/8NjDiFo5HHi', 3],
+				['Connor B.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=4wnT9BLbRj&gradeMode=true', 2],
+				['Dario H.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=GcB6jD9Wd2&gradeMode=true', 2],
+				['David B.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=D2zEiCXfM7&gradeMode=true', 2],
+				['Earl H.','https://arcade.makecode.com/---run?id=94612-60210-53164-38197', 1],
+				['Elaine K.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=qUO1SAcz8h&gradeMode=true', 2],
+				['Eli V.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=DMR6bXDnST&gradeMode=true', 2],
+				['Elli B.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=i3xqAhHoWS&gradeMode=true', 2],
+				['Emilio H.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=PBvy6EPUfg&gradeMode=true', 2],
+				['Emma V.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=LPNSS5zDSL&gradeMode=true', 2],
+				['Enzo M.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=mQTKRFjNZw&gradeMode=true', 2],
+				['Farley M.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=gzOKp2zB0H&gradeMode=true', 2],
+				['Freddie C.F.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=hH4MH1M5bB&gradeMode=true', 2],
+				['Gavin I.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=R53WkRLmNZ&gradeMode=true', 2],
+				['Giovanni V.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=IO8ainy8jK&gradeMode=true', 2],
+				['Hunter H.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=1kMMc7rFly&gradeMode=true', 2],
+				['Isaac B.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=s6GGuJ2mOv&gradeMode=true', 2],
+				['Isaac V.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=J97jJND7CN&gradeMode=true', 2],
+				['Jackson H.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=b0R1K4x69w&gradeMode=true', 2],
+				['Jackson W.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=ybidfO9VUj&gradeMode=true', 2],
+				['Jaden C.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=s6qZeySKmn&gradeMode=true', 2],
+				['Jasim D.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=AKx1R5yCgx&gradeMode=true', 2],
+				['Jayce J.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=bVgwogqlNC&gradeMode=true', 2],
+				['Jaylin T.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=uyD2vNuKRs&gradeMode=true', 2],
+				['Jeremy J.','https://arcade.makecode.com/---run?id=93028-16871-73823-38282', 1],
+				['Joseph D.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=FC5UB5eixo&gradeMode=true', 2],
+				['Kaisar D.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=4JGaEv2gqk&gradeMode=true', 2],
+				['Kyle W.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=KlUIgRM6cs&gradeMode=true', 2],
+				['Lauren H.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=PB78KT5nTT&gradeMode=true', 2],
+				['Levi P.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=Qltmqsoh8x&gradeMode=true', 2],
+				['Logan Y.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=WnQesYPcWe&gradeMode=true', 2],
+				['Lorenzo P.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=yzKOt3qIId&gradeMode=true', 2],
+				['Melvin M.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=EJg6scJ9u2&gradeMode=true', 2],
+				['Mia C.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=vziqHheHyF&gradeMode=true', 2],
+				['Micah D.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=glCEL9iEH3&gradeMode=true', 2],
+				['Micah P.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=cdKU2yo9WC&gradeMode=true', 2],
+				['Nash W.','https://arcade.makecode.com/---run?id=74346-51505-11851-04694', 1],
+				['Nasir C.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=hsYPGIBQgF&gradeMode=true', 2],
+				['Nathan B.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=wjiM84isu4&gradeMode=true', 2],
+				['Nathan M.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=BTI8ksBBCE&gradeMode=true', 2],
+				['Nehemiah G.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=s5FRvvVOzI&gradeMode=true', 2],
+				['Noah O.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=ipcbPxVHUY&gradeMode=true', 2],
+				['Parker Y.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=F2EGt4O8ig&gradeMode=true', 2],
+				['Penelope M.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=qThyL4FyG5&gradeMode=true', 2],
+				['Preston L.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=i9XY1GunZe&gradeMode=true', 2],
+				['Raine C.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=sNUn6w90Nk&gradeMode=true', 2],
+				['River G.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=2jlqd5BBEO&gradeMode=true', 2],
+				['Rodeen H.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=zDYw6Z71ts&gradeMode=true', 2],
+				['Roy B.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=xH8r6GE9RB&gradeMode=true', 2],
+				['Ryan B.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=rEDcpNSP04&gradeMode=true', 2],
+				['Rylee C.','https://scratch.mit.edu/projects/815331300/embed', 0],
+				['Savannah S.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=7q8stRVKBk&gradeMode=true', 2],
+				['Seamus W.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=TxeH1akeAs&gradeMode=true', 2],
+				['Sebastian P.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=NSwyQ86i5f&gradeMode=true', 2],
+				['Solomon O.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=gGB6RpNGzB&gradeMode=true', 2],
+				['Ted K.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=A4usCCzTrC&gradeMode=true', 2],
+				['William H.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=lf8gHnMbxf&gradeMode=true', 2],
+				['Zachary W.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=YY0cNFxfL5&gradeMode=true', 2],
+				['Zariyah C.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=Rn2UV5Vcri&gradeMode=true', 2],
+				['Zion C.','https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=BFzICzT4FO&gradeMode=true', 2]
+			]
+			
+	
+			
+			var game_display = document.getElementById("game_display");
+			var game_header = document.getElementById("game_header");
+			var game_container = document.getElementById("game_container");
+			
+			var window_const = window.parent.innerWidth;
+			
+			var left_button = document.getElementById("left_button");
+			var right_button = document.getElementById("right_button");
+			
+			let l_button = document.querySelector('#left_button');
+			let r_button = document.querySelector('#right_button');
+			let g_display = document.querySelector('#game_display');
+			
+			var js_previous = false;
+			
+			selectClass();
+			
+			window.addEventListener('resize', function(event) {
+				
+				resize();
+				game_display.src = ninja_list[current][1];	
+				
+			}, true);
+			
+			//Prevent key down
+			window.addEventListener("keydown", function(e) {
+    			if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+        			e.preventDefault();
+    			}
+				
+				const event = new Event("build");
+			}, false);
+			
+			
+			
+			if(current === 0) left_button.style.opacity = 0.2;
+			if(current == ninja_list.length-1) right_button.style.opacity = 0.2;
+			
+			function next_page() {
+				
+				if(current < ninja_list.length-1) {
+					
+					current++;
+					
+					if(current == ninja_list.length-1) right_button.style.opacity = 0.2;
+					else left_button.style.opacity = 1.0;
+					
+					selectClass();
+				}
+			}
+			
+			function previous_page() {	
+				
+				if(current > 0) {
+					
+					current--;
+					
+					if(current === 0) left_button.style.opacity = 0.2;
+					else right_button.style.opacity = 1.0;
+					
+					selectClass();
+				}
+			}
+			
+			
+			function selectClass() {
+				if (ninja_list[current][2] === 0){
+						game_display.className = "scratch";
+						game_display.style.width = window.parent.innerHeight/1.2;
+						game_display.style.height = window.parent.innerHeight/1.2;
+						sm_display();
+					} else if (ninja_list[current][2] == 1){
+						game_display.className = "makecode";
+						game_display.style.width = window.parent.innerHeight/1.43;
+						game_display.style.height = window.parent.innerHeight;
+						sm_display();
+					} else if (ninja_list[current][2] == 2){
+						game_display.className = "javascript";
+						game_display.style.width = "1800px";
+						game_display.style.height = "1000px";
+						js_display();
+					} else if (ninja_list[current][2] == 3){
+						game_display.className = "tinkercad";
+						game_display.style.width = window.parent.innerWidth/1.5;
+						game_display.style.height = window.parent.innerHeight/1.35;
+						sm_display();
+					}
+				
+				game_display.src = ninja_list[current][1];
+				game_header.innerHTML = ninja_list[current][0];	//window_const;
+			}
+			
+			function resize() {
+				if (ninja_list[current][2] === 0){
+					game_display.style.width = window.parent.innerHeight/1.2;
+					game_display.style.height = window.parent.innerHeight/1.2;
+					sm_display();
+				} else if (ninja_list[current][2] == 1){
+					game_display.style.width = window.parent.innerHeight/1.43;
+					game_display.style.height = window.parent.innerHeight;
+					sm_display();
+				} else if (ninja_list[current][2] == 2){
+					js_display();
+				} else if (ninja_list[current][2] == 3){
+					game_display.style.width = window.parent.innerWidth/1.5;
+					game_display.style.height = window.parent.innerHeight/1.35;
+					sm_display();
+				}
+				
+			}
+			
+			function js_display() {
+				
+				var cs = getComputedStyle(game_display);
+				var paddingLeft = parseFloat(cs.paddingLeft);
+				var width = game_display.offsetWidth;
+				var height = game_display.offsetHeight;
+				
+				
+					
+				game_display.style.webkitTransform = "scale(" + window.parent.innerWidth/1800 + ")";
+				game_display.style.clipPath = "inset(" + (height*10.3)/100 + "px " + (width-paddingLeft)/2 + "px " + (height*18)/100 + "px  0px)";
+				game_display.style.bottom = (width*8)/100 + "px";
+
+				if(!js_previous) {
+					r_button.after(g_display);
+					js_previous = true;
+				}
+				
+				right_button.style.paddingBottom = "0px";
+				left_button.style.paddingBottom = "0px";
+				right_button.style.left = "23vw";
+				left_button.style.right = "23vw";
+				right_button.style.top = "15vw";
+				left_button.style.top = "15vw";
+			}
+			
+			function sm_display() {
+				if(game_display.className == "tinkercad"){
+					game_display.style.clipPath = "inset(11vh 0 0 0)";
+				} else {
+					game_display.style.clipPath = "inset(0 0 0 0)";
+				}
+				
+				game_display.style.webkitTransform = "scale(1)";
+				game_display.style.bottom = "0px";
+				
+				if(js_previous) {
+					game_display.after(r_button);
+					js_previous = false;
+				}
+				
+				right_button.style.paddingBottom = "50vh";
+				left_button.style.paddingBottom = "50vh";
+				right_button.style.left = "0px";
+				left_button.style.right = "0px";
+				right_button.style.top = "0px";
+				left_button.style.top = "0px";
+			}
+			
+			
+			
+		</script>
+		
+	</body>
+	
+</html>
+	
+
+	
+<!--
+				<div class="game">
+					<h3 style="text-align: center; margin-bottom: 20px; margin-top: 40px">William - Mail Truck</h3>
+					<iframe class="scratch" src="https://scratch.mit.edu/projects/578356606/embed" allowtransparency="true"  width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+				</div>
+				
+				<div class="game">
+					<h3 style="text-align: center; margin-bottom: 20px; margin-top: 40px">Westley - Coin Catch</h3>
+					<iframe class="makecode" src="https://arcade.makecode.com/---run?id=S17247-48431-05182-35434" allowfullscreen="allowfullscreen" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" frameborder="0" width="485" height="700"></iframe>
+				</div>
+
+
+
+
+
+
+		<script>
+			
+			
+			
+			document.addEventListener('DOMContentLoaded', () => {
+				var iframe = document.getElementById("js_game");
+				iframe.src = encodeURI('https://gdp.code.ninja/Scenes/Play/?userTrekSceneSlug=GpGzKDMmSX&gradeMode=true'); 
+			});
+			
+		</script>
+-->
