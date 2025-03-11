@@ -255,8 +255,31 @@ var ninja_list = [
 				{ name: "Raine C", width: 0, height: 0, sprite: 	
 						`None` 
 				},
-				{ name: "Ryan M", width: 0, height: 0, sprite: 	
-						`None` 
+				{ name: "Ryan M", width: 18, height: 21, sprite: 	
+						`img\`
+						.....cccbbbbb.....
+						...ccb454445bbb...
+						..cc4444444444bc..
+						..e411144441114e..
+						.eb41f144441f14bc.
+						.eb4111445411145e.
+						.ebb54444444444be.
+						f.eb444ffff444be.f
+						f87eeb444f34bee68f
+						f872eeeeeeeeee278f
+						fe6622222222226cef
+						fec67667776676ccef
+						febe88cc88ccc8ebef
+						feebecceeeeecebeef
+						f.eebb44444444ee.f
+						ff..ccccceeeee..ff
+						f......f..f......f
+						.......f..f.......
+						.......f..f.......
+						.......f..f.......
+						.....fff..fff.....
+						/``
+ 
 				},
 				{ name: "Ryker M", width: 0, height: 0, sprite: 	
 						`None` 
