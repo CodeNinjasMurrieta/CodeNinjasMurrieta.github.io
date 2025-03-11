@@ -384,6 +384,9 @@ var ninja_list = [
 				if (ninja_list[index].width === 0) {
 					button.disabled = true;
 				}
+    				else {
+					button.disabled = false;
+ 				}
 			
 				
 				
