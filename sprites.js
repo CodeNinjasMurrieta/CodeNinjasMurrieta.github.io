@@ -255,8 +255,9 @@ var ninja_list = [
 				{ name: "Raine C", width: 0, height: 0, sprite: 	
 						`None` 
 				},
-				{ name: "Ryan M", width: 18, height: 21, sprite: 	
-						`img\`
+				{ name: "Ryan M", width: 18, height: 21, sprite: 
+					
+					`img\`
 						.....cccbbbbb.....
 						...ccb454445bbb...
 						..cc4444444444bc..
@@ -278,7 +279,7 @@ var ninja_list = [
 						.......f..f.......
 						.......f..f.......
 						.....fff..fff.....
-						/``
+						\``
  
 				},
 				{ name: "Ryker M", width: 0, height: 0, sprite: 	
